@@ -189,7 +189,20 @@ public void exibirListaDeLivros() {
         JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
-   
+    
+    
+    
+   public void realizarDevolucao() {
+    int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do usuário que está realizando a devolução: "));
+    int idLivro = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser devolvido: "));
+
+    try {
+        bibliotecaService.realizarDevolucao(idUsuario, idLivro);
+        JOptionPane.showMessageDialog(null, "Devolução realizada com sucesso!");
+    } catch (BibliotService.DevolucaoException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+}  
 }
     
 
