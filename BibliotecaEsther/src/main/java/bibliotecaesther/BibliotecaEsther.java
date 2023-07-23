@@ -174,8 +174,20 @@ public void exibirListaDeLivros() {
         JOptionPane.showMessageDialog(null, sb.toString(), "Detalhes do Usuário", JOptionPane.PLAIN_MESSAGE);
     } else {
         JOptionPane.showMessageDialog(null, "Usuário não encontrado!", 
-                "Erro", JOptionPane.ERROR_MESSAGE);}
-        
+                "Erro", JOptionPane.ERROR_MESSAGE);}}
+
+
+
+    public void realizarEmprestimo() {
+    int idLivro = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do livro a ser emprestado: "));
+    int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("Digite o ID do usuário que está realizando o empréstimo: "));
+
+    try {
+        bibliotecaService.realizarEmprestimo(idLivro, idUsuario);
+        JOptionPane.showMessageDialog(null, "Empréstimo realizado com sucesso!");
+    } catch (BibliotService.EmprestimoException e) {
+        JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
 }
    
 }
